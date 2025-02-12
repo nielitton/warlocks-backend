@@ -1,0 +1,10 @@
+services:
+  postgres: 
+    image: postgres:latest
+    container_name: warlocks-db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=warlocks
+      - POSTGRES_PASSWORD=warlocks
+      - POSTGRES_DB=warlocks_db
