@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch, Post, Query } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from "@nestjs/common";
 import { NotesService } from "src/api/services/notes/notes.service";
 import { NoteDto, UpdateNoteDto } from "src/core/models/dtos/note-dto";
 
@@ -19,6 +19,11 @@ export class NotesController {
     }
 
     @Get(':id')
+    async findOneNote(@Param('id') id: string) {
+        return await this.notesService.findOneNote(id);
+    }
+
+    @Get('/user/:id')
     findAllNotesByUser(
         @Param('id') id: string, 
         @Query('limit') limit?: string, 
@@ -30,5 +35,15 @@ export class NotesController {
     @Patch(':id')
     updateNote(@Param('id') id: string, @Body() data: UpdateNoteDto) {
         return this.notesService.updateNote(id, data);
+    }
+
+    @Delete(':id')
+    softDeleteNote(@Param('id') id: string) {
+        return this.notesService.softDeleteNote(id);
+    }
+
+    @Delete('/hard/:id')
+    hardDeleteNote(@Param('id') id: string) {
+        return this.notesService.hardDeleteNote(id);
     }
 }

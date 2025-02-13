@@ -6,6 +6,9 @@ import { AuthUserUseCase } from "./auth/auth.use-case";
 import { CreateNotesUseCase } from "./notes/create-notes.use-case";
 import { FindAllNotesUseCase } from "./notes/find-all-notes.use-case";
 import { UpdateNoteUseCase } from "./notes/update-note.use-case";
+import { softDeleteNoteUseCase } from "./notes/soft-delete-notes.use-case";
+import { HardDeleteNoteUseCase } from "./notes/hard-delete-note.use-case";
+import { FindOneNoteUseCase } from "./notes/find-one-note.use-case";
 
 const User: Provider[] = [
     CreateUserUseCase,
@@ -15,7 +18,10 @@ const User: Provider[] = [
 const Notes: Provider[] = [
     CreateNotesUseCase,
     FindAllNotesUseCase,
-    UpdateNoteUseCase
+    UpdateNoteUseCase,
+    softDeleteNoteUseCase,
+    HardDeleteNoteUseCase,
+    FindOneNoteUseCase
 ]
 
 const Auth: Provider[] = [
