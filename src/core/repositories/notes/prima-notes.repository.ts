@@ -48,8 +48,8 @@ export class PrismaNotesRepository implements NotesRepository {
         });
     }
 
-    async softDelete(noteId: string): Promise<void> {
-        await this.prisma.notes.update({
+    async softDelete(noteId: string): Promise<Note> {
+        return await this.prisma.notes.update({
             where: {
                 id: noteId
             },
@@ -59,8 +59,8 @@ export class PrismaNotesRepository implements NotesRepository {
         })
     }
 
-    async hardDelete(noteId: string): Promise<void> {
-        await this.prisma.notes.delete({
+    async hardDelete(noteId: string): Promise<Note> {
+        return await this.prisma.notes.delete({
             where: {
                 id: noteId
             }

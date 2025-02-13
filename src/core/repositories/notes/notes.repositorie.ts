@@ -8,6 +8,6 @@ export abstract class NotesRepository {
     abstract count(filter?: DbQueryFilter): Promise<number>
     abstract create(note: Note): Promise<Note>;
     abstract update(noteId: string, updatedNote: UpdateNoteDto): Promise<Note>;
-    abstract softDelete(noteId: string): Promise<void>;
-    abstract hardDelete(noteId: string): Promise<void>;
+    abstract softDelete(noteId: string): Promise<Note>;
+    abstract hardDelete(noteId: string): Promise<Note>;
 }
