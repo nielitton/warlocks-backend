@@ -6,7 +6,7 @@ import { APP_PORT } from 'src/core/environments/environments';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  
+
   app.useGlobalFilters(new BusinessExceptionFilter())
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
 

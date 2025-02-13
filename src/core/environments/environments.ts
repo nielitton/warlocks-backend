@@ -2,8 +2,10 @@ import { configDotenv } from "dotenv";
 
 configDotenv()
 
-const { APP_PORT } = process.env;
+const { APP_PORT, JWT_SECRET, JWT_EXPIRES_IN } = process.env;
 
 export {
-    APP_PORT
+    APP_PORT,
+    JWT_SECRET,
+    JWT_EXPIRES_IN,
 }
