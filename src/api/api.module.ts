@@ -5,16 +5,20 @@ import { UserService } from "./services/users/users.service";
 import { AuthService } from "./services/auth/auth.service";
 import { AuthController } from "./controllers/auth/auth.controller";
 import { JwtService } from "@nestjs/jwt";
+import { NotesService } from "./services/notes/notes.service";
+import { NotesController } from "./controllers/notes/notes.controller";
 
 @Module({
     imports: [UseCasesModule],
     controllers: [
         UserController,
-        AuthController
+        AuthController,
+        NotesController
     ],
     providers: [
         UserService, 
         AuthService,
+        NotesService,
         JwtService
     ],
 })

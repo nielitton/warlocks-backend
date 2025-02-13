@@ -4,6 +4,8 @@ import { UserRepository } from "./users/users.repository";
 import { PrismaUserRepository } from "./users/prisma-users.repositorie";
 import { AuthRepository } from "./auth/auth.repository";
 import { PrismaAuthRepository } from "./auth/prisma-auth.repositorie";
+import { NotesRepository } from "./notes/prisma-notes.repositorie";
+import { PrismaNotesRepository } from "./notes/notes.repository";
 
 const providers: Provider[] = [
     {
@@ -13,6 +15,10 @@ const providers: Provider[] = [
     {
         provide: AuthRepository,
         useClass: PrismaAuthRepository
+    },
+    {
+        provide: NotesRepository,
+        useClass: PrismaNotesRepository
     }
 ]
 

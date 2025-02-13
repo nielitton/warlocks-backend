@@ -24,6 +24,13 @@ export class PrismaUserRepository implements UserRepository {
                 id: true,
                 name: true,
                 email: true,
+                notes: {
+                    select: {
+                        id: true,
+                        title: true,
+                        content: true
+                    }
+                }
             }
         })
 
