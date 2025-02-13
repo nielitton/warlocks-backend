@@ -1,4 +1,4 @@
-import { isNotEmpty, IsNotEmpty } from "class-validator";
+import { isNotEmpty, IsNotEmpty, IsOptional } from "class-validator";
 import { Note } from "../entities/notes.entity";
 
 export class NoteDto extends Note {
@@ -10,4 +10,12 @@ export class NoteDto extends Note {
 
     @IsNotEmpty({ message: "Você precisa passar o id do usuário"})
     userId: string;
+}
+
+export class UpdateNoteDto {
+    @IsOptional()
+    title: string;
+
+    @IsOptional()
+    content: string;
 }

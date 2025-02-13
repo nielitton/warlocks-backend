@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { Notes } from "@prisma/client";
 import { BusinessException } from "src/core/exception/businnes-exception";
 import { Where } from "src/core/models/db-query-filter/db-query-filter";
-import { NotesRepository } from "src/core/repositories/notes/prisma-notes.repositorie";
+import { NotesRepository } from "src/core/repositories/notes/notes.repositorie";
 
 @Injectable()
 export class FindAllNotesUseCase {

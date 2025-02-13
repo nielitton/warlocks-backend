@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { NoteDto } from "src/core/models/dtos/note-dto";
-import { NotesRepository } from "src/core/repositories/notes/prisma-notes.repositorie";
+import { NotesRepository } from "src/core/repositories/notes/notes.repositorie";
 
 @Injectable()
 export class CreateNotesUseCase {

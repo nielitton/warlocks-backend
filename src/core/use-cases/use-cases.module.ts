@@ -5,6 +5,7 @@ import { FindUsersUseCase } from "./users/find-users.use-case";
 import { AuthUserUseCase } from "./auth/auth.use-case";
 import { CreateNotesUseCase } from "./notes/create-notes.use-case";
 import { FindAllNotesUseCase } from "./notes/find-all-notes.use-case";
+import { UpdateNoteUseCase } from "./notes/update-note.use-case";
 
 const User: Provider[] = [
     CreateUserUseCase,
@@ -13,7 +14,8 @@ const User: Provider[] = [
 
 const Notes: Provider[] = [
     CreateNotesUseCase,
-    FindAllNotesUseCase
+    FindAllNotesUseCase,
+    UpdateNoteUseCase
 ]
 
 const Auth: Provider[] = [

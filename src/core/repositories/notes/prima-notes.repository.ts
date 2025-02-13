@@ -1,6 +1,6 @@
 import { PrismaService } from "src/core/database/prisma/prisma.service";
-import { NotesRepository } from "./prisma-notes.repositorie";
-import { NoteDto } from "src/core/models/dtos/note-dto";
+import { NotesRepository } from "./notes.repositorie";
+import { NoteDto, UpdateNoteDto } from "src/core/models/dtos/note-dto";
 import { Note } from "src/core/models/entities/notes.entity";
 import { Injectable } from "@nestjs/common";
 import { DbQueryFilter } from "src/core/models/db-query-filter/db-query-filter";
@@ -39,13 +39,13 @@ export class PrismaNotesRepository implements NotesRepository {
         })
     }
 
-    async update(noteId: string, updatedNote: NoteDto): Promise<Note> {
+    async update(noteId: string, data: UpdateNoteDto): Promise<Note> {
         return await this.prisma.notes.update({
             where: {
                 id: noteId
             },
-            data: updatedNote
-        })
+            data
+        });
     }
 
     async softDelete(noteId: string): Promise<void> {
