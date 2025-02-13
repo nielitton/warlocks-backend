@@ -14,7 +14,6 @@ async function bootstrap() {
   app.enableCors({
     origin: true,
   })
-
   
   const config = new DocumentBuilder()
   .setTitle('Api De Notas Warlocks')

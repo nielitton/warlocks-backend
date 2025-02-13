@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query, UseGuards } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
-import { ApiBearerAuth, ApiOperation, ApiParam, ApiQuery } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiExcludeEndpoint, ApiOperation, ApiParam, ApiQuery } from "@nestjs/swagger";
 import { NotesService } from "src/api/services/notes/notes.service";
 import { JwtAuthGuard } from "src/core/auth/authGuard";
 import { NoteDto, UpdateNoteDto } from "src/core/models/dtos/note-dto";
@@ -12,38 +12,6 @@ export class NotesController {
     constructor(
         private readonly notesService: NotesService
     ) { }
-
-    @ApiOperation({
-        summary: 'Criação de notas',
-        description: 'Este endpoint permite você criar uma nota com base no id do usuário.'
-    })
-    @Post('')
-    createNote(@Body() data: NoteDto) {
-        return this.notesService.create(data);
-    }
-
-    @ApiOperation({
-        summary: 'Buscar notas',
-        description: 'Este endpoint te permite buscar todas as notas sem precisar passar o id do usuário.'
-    })
-    @Get('')
-    findAll() {
-        return this.notesService.findAllNotes()
-    }
-
-    @ApiParam({
-        name: 'id',
-        type: 'string',
-        description: 'Id de uma nota.'
-    })
-    @ApiOperation({
-        summary: "Buscar nota.",
-        description: 'Este endpoint busca uma única nota pelo seu id.'
-    })
-    @Get(':id')
-    async findOneNote(@Param('id') id: string) {
-        return await this.notesService.findOneNote(id);
-    }
 
     @ApiOperation({
         summary: "Busca de notas",
@@ -80,6 +48,39 @@ export class NotesController {
         @Query('title') title?: string
     ) {
         return this.notesService.findAllNotes(id, limit, page, title)
+    }
+
+    @ApiExcludeEndpoint()
+    @ApiOperation({
+        summary: 'Buscar notas',
+        description: 'Este endpoint te permite buscar todas as notas sem precisar passar o id do usuário.'
+    })
+    @Get('')
+    findAll() {
+        return this.notesService.findAllNotes()
+    }
+
+    @ApiParam({
+        name: 'id',
+        type: 'string',
+        description: 'Id de uma nota.'
+    })
+    @ApiOperation({
+        summary: "Buscar nota.",
+        description: 'Este endpoint busca uma única nota pelo seu id.'
+    })
+    @Get(':id')
+    async findOneNote(@Param('id') id: string) {
+        return await this.notesService.findOneNote(id);
+    }
+
+    @ApiOperation({
+        summary: 'Criação de notas',
+        description: 'Este endpoint permite você criar uma nota com base no id do usuário.'
+    })
+    @Post('')
+    createNote(@Body() data: NoteDto) {
+        return this.notesService.create(data);
     }
 
     @ApiOperation({
