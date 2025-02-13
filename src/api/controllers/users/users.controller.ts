@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Injectable, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Post, UseGuards } from "@nestjs/common";
+import { ApiBearerAuth, ApiBody, ApiProperty, ApiSecurity } from "@nestjs/swagger";
 import { UserService } from "src/api/services/users/users.service";
 import { JwtAuthGuard } from "src/core/auth/authGuard";
 import { UserDto } from "src/core/models/dtos/user-dto";
@@ -14,6 +15,7 @@ export class UserController {
         return this.userService.create(user)
     }
 
+    @ApiBearerAuth()
     @UseGuards(JwtAuthGuard)
     @Get('') 
     findAll() {
