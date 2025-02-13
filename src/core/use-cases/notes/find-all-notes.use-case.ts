@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { Notes } from "@prisma/client";
+import { contains } from "class-validator";
 import { BusinessException } from "src/core/exception/businnes-exception";
 import { Where } from "src/core/models/db-query-filter/db-query-filter";
 import { NotesRepository } from "src/core/repositories/notes/notes.repositorie";
@@ -7,13 +8,21 @@ import { NotesRepository } from "src/core/repositories/notes/notes.repositorie";
 @Injectable()
 export class FindAllNotesUseCase {
     constructor(private readonly notesRepository: NotesRepository) {}
-    async execute(userId?: string, page: string = "1", limit: string = "10"): Promise<any> {
+    async execute(userId?: string, page: string = "1", limit: string = "10", title?: string): Promise<any> {
         if (!userId) {
             throw new BusinessException("Você precisa passar o id de algum usuário", 404);
         }
 
         const where: Where<Notes> = {
-            AND: [{ userId }, { active: true }]
+            AND: [
+                { userId }, 
+                { active: true },
+                {
+                    OR: [
+                        { title: { contains: title, mode: 'insensitive' } }
+                    ]
+                }
+            ],
         };
 
         const totalRecords = await this.notesRepository.count({ where });

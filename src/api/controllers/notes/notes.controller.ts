@@ -30,9 +30,10 @@ export class NotesController {
     findAllNotesByUser(
         @Param('id') id: string, 
         @Query('limit') limit?: string, 
-        @Query('page') page?: string
+        @Query('page') page?: string,
+        @Query('title') title?: string
     ) {
-        return this.notesService.findAllNotes(id, limit, page)
+        return this.notesService.findAllNotes(id, limit, page, title)
     }
 
     @Patch(':id')

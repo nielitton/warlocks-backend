@@ -15,11 +15,11 @@ export class UpdateNoteUseCase {
             throw new BusinessException(`Nota com o id ${noteId} não foi encontrada.`, 404);
         }
 
-        await this.noteRepository.update(noteId, data)
+        const updatedNote = await this.noteRepository.update(noteId, data)
 
         return {
             message: "Nota atualizada com sucesso",
-            note
+            note: updatedNote
         }
     }
 }

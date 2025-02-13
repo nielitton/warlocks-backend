@@ -22,8 +22,8 @@ export class NotesService {
         return this.createNoteUseCase.execute(data);
     }
 
-    async findAllNotes(userId?: string, page?: string, limit?: string) {
-        return this.findAllNotesUseCase.execute(userId, limit, page)
+    async findAllNotes(userId?: string, page?: string, limit?: string, title?: string) {
+        return this.findAllNotesUseCase.execute(userId, limit, page, title)
     }
 
     async findOneNote(noteId: string) {
