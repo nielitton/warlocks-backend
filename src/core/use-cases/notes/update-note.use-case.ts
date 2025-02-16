@@ -6,12 +6,12 @@ import { NotesRepository } from "src/core/repositories/notes/notes.repositorie";
 
 @Injectable()
 export class UpdateNoteUseCase {
-    constructor(private readonly noteRepository: NotesRepository){}
+    constructor(private readonly noteRepository: NotesRepository) { }
 
     async execute(noteId: string, data: UpdateNoteDto): Promise<{ message: string, note: Note }> {
         const note = await this.noteRepository.findOneNote(noteId);
 
-        if(!note) {
+        if (!note) {
             throw new BusinessException(`Nota com o id ${noteId} não foi encontrada.`, 404);
         }
 

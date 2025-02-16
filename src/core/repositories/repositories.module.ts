@@ -1,11 +1,11 @@
 import { Module, Provider } from "@nestjs/common";
 import { DatabaseModule } from "../database/database.module";
-import { UserRepository } from "./users/users.repository";
-import { PrismaUserRepository } from "./users/prisma-users.repositorie";
 import { AuthRepository } from "./auth/auth.repository";
 import { PrismaAuthRepository } from "./auth/prisma-auth.repositorie";
 import { NotesRepository } from "./notes/notes.repositorie";
 import { PrismaNotesRepository } from "./notes/prima-notes.repository";
+import { PrismaUserRepository } from "./users/prisma-users.repositorie";
+import { UserRepository } from "./users/users.repository";
 
 const providers: Provider[] = [
     {
@@ -28,4 +28,4 @@ const providers: Provider[] = [
     providers: providers,
 })
 
-export class RepositoriesModule {}
+export class RepositoriesModule { }
