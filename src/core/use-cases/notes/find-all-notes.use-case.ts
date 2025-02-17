@@ -30,7 +30,8 @@ export class FindAllNotesUseCase {
         const notes = await this.notesRepository.findAllByUser({
             where,
             skip: (Number(page) - 1) * Number(limit),
-            take: Number(limit)
+            take: Number(limit),
+            orderBy: { createdAt: "desc" },
         });
 
         return {
