@@ -12,11 +12,14 @@ export class AuthService {
     ) { }
 
     async login(data: LoginDto): Promise<any> {
-        const email = await this.authUseCase.execute(data)
+        const user = await this.authUseCase.execute(data)
+
+        const email = user.email
 
         return {
             token: await this.jwtService.signAsync({ email }, { secret: JWT_SECRET, expiresIn: JWT_EXPIRES_IN }),
-            expires_in: JWT_EXPIRES_IN
+            expires_in: JWT_EXPIRES_IN,
+            user
         }
     }
 

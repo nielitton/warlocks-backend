@@ -26,6 +26,6 @@ export class AuthUserUseCase {
             throw new BusinessException("Email ou senha incorretos", 401)
         }
 
-        return email
+        return user
     }
 }
