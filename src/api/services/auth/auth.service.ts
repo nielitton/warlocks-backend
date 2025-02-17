@@ -16,7 +16,6 @@ export class AuthService {
 
         const email = user.email
 
-        console.log(JWT_EXPIRES_IN) // 86400
         return {
             token: await this.jwtService.signAsync({ email }, { secret: JWT_SECRET, expiresIn: `${JWT_EXPIRES_IN}s` }),
             expires_in: JWT_EXPIRES_IN,
