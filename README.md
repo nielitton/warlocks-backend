@@ -3,7 +3,7 @@
 
 Esse é o backend para o projeto Warlocks Notes, aqui você vai aprender a iniciar o projeto localmente
 
-Caso você não queira inicia-lo localmente, você pode testar online, através do Swagger, no link abaixo
+Caso você não queira inicia-lo localmente, você pode testar online, através do Swagger, no link abaixo, esta aplicação está hospedada no render.
 
 https://warlocks-backend.onrender.com/api
 
@@ -74,5 +74,5 @@ Assim você verá toda a documentação da API. (Endpoints, Dtos, Models e etc..
 
 ## Stack utilizada
 
-**Back-end:** Node, NestJs, PrismaOrm, Swagger, Bcrypt, Jwt, Passport
+**Back-end:** Node, NestJs, PrismaOrm, Swagger, Bcrypt, Jwt, Passport, TypeScript
 
