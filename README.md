@@ -71,3 +71,8 @@ http://localhost:3333/api
 
 Assim você verá toda a documentação da API. (Endpoints, Dtos, Models e etc...).
 
+
+## Stack utilizada
+
+**Back-end:** Node, NestJs, PrismaOrm, Swagger, Bcrypt, Jwt, Passport
+
