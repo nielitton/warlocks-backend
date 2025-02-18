@@ -7,7 +7,6 @@ Caso você não queira inicia-lo localmente, você pode testar online, através 
 
 https://warlocks-backend.onrender.com/api
 
-
 ## Instalação
 
 Para instalar o  projeto, você precisará instalar algumas dependências, sendo elas
@@ -75,4 +74,10 @@ Assim você verá toda a documentação da API. (Endpoints, Dtos, Models e etc..
 ## Stack utilizada
 
 **Back-end:** Node, NestJs, PrismaOrm, Swagger, Bcrypt, Jwt, Passport, TypeScript
+
+## Ponto importante
+
+Depois de rodar o backend, você pode iniciar o frontend.
+
+Url do repo frontend: https://github.com/nielitton/warlocks-frontend
 
